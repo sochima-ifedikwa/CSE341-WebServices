@@ -4,13 +4,11 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+// import the controllers in here
+const lesson1Controller = require('./controllers/lesson1');
 
-app.get('/dadzie', (req, res) => {
-  res.send('Irene Dadzie');
-});
+app.get('/', lesson1Controller.homeRoute);
+app.get('/dadzie', lesson1Controller.dadzieRoute);
 
 app.listen(port, () => {
   console.log(`Server is listening at port ${port}`);
