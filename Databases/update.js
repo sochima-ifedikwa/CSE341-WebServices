@@ -72,3 +72,15 @@ async function updateAllListingsToHavePropertyType(client) {
     console.log(`${result.matchedCount} document(s) matched the query criteria.`);
     console.log(`${result.modifiedCount} document(s) was/were updated.`);
 }
+
+async function findListingByName(client, nameOfListing) {
+    // See https://mongodb.github.io/node-mongodb-native/3.6/api/Collection.html#findOne for the findOne() docs
+    const result = await client.db("sample_airbnb").collection("listingsAndReviews").findOne({ name: nameOfListing });
+
+    if (result) {
+        console.log(`Found a listing in the db with the name '${nameOfListing}':`);
+        console.log(result);
+    } else {
+        console.log(`No listings found with the name '${nameOfListing}'`);
+    }
+}
