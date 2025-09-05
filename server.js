@@ -5,7 +5,6 @@ const app = express();
 const port = 3000;
 
 // import the routes
-
 app.use('/', require('./routes'));
 
 app.listen(port, () => {
